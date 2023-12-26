@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: proj1-configmap
+  namespace: proj1
+data:
+  db_host: mysqldb-service
+  db_port: "3306"
+  LOG_LEVEL: INFO
