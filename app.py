@@ -2,11 +2,11 @@ from flask import Flask, render_template, request
 from flask_mysqldb import MySQL
 app = Flask(__name__)
 
-app.config['MYSQL_HOST'] = "DB_HOST"
+app.config['MYSQL_HOST'] = "mysqldb-service"
 app.config['MYSQL_USER'] = "admin"
 app.config['MYSQL_PASSWORD'] = "password"
 app.config['MYSQL_PORT'] = "3306"
-app.config['MYSQL_DB'] = "online_medicines_store"
+app.config['MYSQL_DB'] = "patientsdb"
 
 mysql = MySQL(app)
 
