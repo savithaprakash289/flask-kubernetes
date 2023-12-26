@@ -12,6 +12,7 @@ CREATE TABLE patients (
   address    VARCHAR(255) DEFAULT NULL,
   age  VARCHAR(255) DEFAULT NULL,
   gender VARCHAR(255) DEFAULT NULL,
+  prescription VARCHAR(255) DEFAULT NULL,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (id),
   CONSTRAINT UQ_Patients_phone UNIQUE (phone)
@@ -19,9 +20,9 @@ CREATE TABLE patients (
 
 DELIMITER //
 CREATE PROCEDURE create_and_return(IN first_name VARCHAR(255), IN father_name VARCHAR(255),
-                  IN phone VARCHAR(255), IN age VARCHAR(255), IN address VARCHAR(255), IN gender VARCHAR(255))
+                  IN phone VARCHAR(255), IN address VARCHAR(255),IN age VARCHAR(255), IN gender VARCHAR(255), IN prescriptionVARCHAR(255))
 BEGIN
-  INSERT INTO patients(first_name, father_name,  phone, address, age, gender) VALUES (first_name, father_name,  phone, address, age, gender);
+  INSERT INTO patients(first_name, father_name,  phone, address, age, gender,prescription) VALUES (first_name, father_name,  phone, address, age, gender,prescription);
 
   SET @PATIENT_ID = LAST_INSERT_ID();
 
