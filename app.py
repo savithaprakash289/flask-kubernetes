@@ -14,15 +14,16 @@ mysql = MySQL(app)
 def index():
     if request.method == "POST":
         full_name = request.form["full_name"]
-       father_name = request.form["father_name"]
-	phone = request.form["phone "]
+        father_name = request.form["father_name"]
+        phone = request.form["phone "]
         age = request.form["age"]
         address = request.form["address"]
+        gender =request.form["gender"]
         prescription = request.form["prescription"]
-		
+
         cur = mysql.connection.cursor()
 
-        cur.execute( "INSERT INTO customers (full_name,father_name,phone, age, address, prescription) VALUES(%s, %s, %s, %s, %s)",(full_name,father_name,phone, age, address, prescription))
+        cur.execute( "INSERT INTO patients (full_name, father_name, phone, age, gender, address, prescription) VALUES(%s, %s, %s,%s %s,%s, %s)",(full_name, father_name, phone, age, address, gender,prescription))
         mysql.connection.commit()
         cur.close()
         return "success"
