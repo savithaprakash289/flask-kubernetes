@@ -1,12 +1,11 @@
 CREATE DATABASE IF NOT EXISTS patientsdb;
-
+  
 USE patientsdb;
 
 DROP TABLE IF EXISTS patients;
 
 CREATE TABLE patients (
-  id         BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
-  first_name VARCHAR(255) DEFAULT NULL,
+  full_name  VARCHAR(255) DEFAULT NULL,
   father_name  VARCHAR(255) DEFAULT NULL,
   phone      VARCHAR(255) DEFAULT NULL,
   address    VARCHAR(255) DEFAULT NULL,
@@ -14,18 +13,18 @@ CREATE TABLE patients (
   gender VARCHAR(255) DEFAULT NULL,
   prescription VARCHAR(255) DEFAULT NULL,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (id),
+  PRIMARY KEY (age),
   CONSTRAINT UQ_Patients_phone UNIQUE (phone)
 );
 
 DELIMITER //
-CREATE PROCEDURE create_and_return(IN first_name VARCHAR(255), IN father_name VARCHAR(255),
-                  IN phone VARCHAR(255), IN address VARCHAR(255),IN age VARCHAR(255), IN gender VARCHAR(255), IN prescriptionVARCHAR(255))
+CREATE PROCEDURE create_and_return(IN full_name VARCHAR(255), IN father_name VARCHAR(255),
+                  IN phone VARCHAR(255), IN  age VARCHAR(255),IN address VARCHAR(255), IN gender VARCHAR(255), IN prescription VARCHAR(255))
 BEGIN
-  INSERT INTO patients(first_name, father_name,  phone, address, age, gender,prescription) VALUES (first_name, father_name,  phone, address, age, gender,prescription);
+  INSERT INTO patients (full_name, father_name, phone, address, age, gender, prescription) VALUES (full_name, father_name,  phone, address, age, gender, prescription);
 
-  SET @PATIENT_ID = LAST_INSERT_ID();
+  SET @PATIENT_AGE= LAST_INSERT_AGE();
 
-  SELECT * FROM patients WHERE id=@PATIENT_ID;
+  SELECT * FROM patients WHERE age=@PATIENT_AGE;
 END //
 DELIMITER ;
