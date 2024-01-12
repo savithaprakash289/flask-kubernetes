@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: pythonapp
-        image: savitha2789/python-docker:latest
+        image:savitha2789/docker-flask-mysql
         env:
         - name: DB_HOST
           valueFrom:
